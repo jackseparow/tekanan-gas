@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Tekanan Udara - Hukum Gas Ideal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; background: #1a1a2e; color: white; }
+        #ui-layer {
+            position: absolute; top: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.1); padding: 20px;
+            border-radius: 15px; backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2); pointer-events: none;
+        }
+        .gauge { margin-bottom: 15px; }
+        .label { font-size: 0.8em; color: #aaa; text-transform: uppercase; }
+        .value { font-size: 1.5em; font-weight: bold; font-family: monospace; color: #00d2ff; }
+        
+        #controls {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 20px; align-items: center;
+            background: rgba(0,0,0,0.5); padding: 15px 30px; border-radius: 50px;
+        }
+        button {
+            padding: 12px 25px; border: none; border-radius: 25px;
+            background: #e94560; color: white; font-weight: bold;
+            cursor: pointer; transition: 0.3s;
+        }
+        button:hover { background: #ff4d6d; transform: scale(1.05); }
+        input[type=range] { cursor: pointer; width: 200px; }
+    </style>
+</head>
+<body>
+
+    <div id="ui-layer">
+        <div class="gauge">
+            <div class="label">Tekanan (P)</div>
+            <div id="pressure-val" class="value">0.00 kPa</div>
+        </div>
+        <div class="gauge">
+            <div class="label">Suhu (T)</div>
+            <div id="temp-val" class="value" style="color: #ff9f43;">300 K</div>
+        </div>
+        <div class="gauge">
+            <div class="label">Partikel (n)</div>
+            <div id="particle-val" class="value" style="color: #2ed573;">0</div>
+        </div>
+    </div>
+
+    <div id="controls">
+        <button onclick="pumpAir()">POMPA UDARA (n+)</button>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <span class="label">Posisi Pemanas</span>
+            <input type="range" id="heat-slider" min="-5" max="5" step="0.1" value="5">
+        </div>
+        <button style="background: #555;" onclick="resetSim()">RESET</button>
+    </div>
+
+    <script src="physics-engine.js"></script>
+</body>
+</html>
