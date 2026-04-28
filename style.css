@@ -1,0 +1,99 @@
+/* Reset dan Font */
+body { 
+    margin: 0; 
+    overflow: hidden; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #0f0c29; /* Warna gelap agar molekul cerah terlihat kontras */
+    color: white; 
+}
+
+/* Layer Informasi (P, T, n) */
+#ui-layer {
+    position: absolute; 
+    top: 20px; 
+    left: 20px;
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 20px;
+    border-radius: 15px; 
+    backdrop-filter: blur(10px); /* Efek kaca transparan */
+    border: 1px solid rgba(255,255,255,0.2); 
+    pointer-events: none; /* Agar tidak menghalangi rotasi kamera 3D */
+    z-index: 100;
+}
+
+.gauge { margin-bottom: 15px; }
+
+.label { 
+    font-size: 0.75rem; 
+    color: #00d2ff; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.value { 
+    font-size: 1.8rem; 
+    font-weight: bold; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+/* Kontrol Simulasi di Bawah */
+#controls {
+    position: absolute; 
+    bottom: 30px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    display: flex; 
+    gap: 25px; 
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 20px 40px; 
+    border-radius: 60px;
+    border: 1px solid rgba(255,255,255,0.1);
+    z-index: 100;
+}
+
+/* Styling Tombol */
+button {
+    padding: 12px 28px; 
+    border: none; 
+    border-radius: 30px;
+    background: linear-gradient(45deg, #e94560, #ff4d6d); 
+    color: white; 
+    font-weight: bold;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+}
+
+button:hover { 
+    transform: scale(1.1); 
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+
+button:active { transform: scale(0.95); }
+
+/* Styling Slider Suhu */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 200px;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: #444;
+    border-radius: 4px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ff9f43;
+    cursor: pointer;
+    margin-top: -6px;
+    box-shadow: 0 0 10px rgba(255, 159, 67, 0.8);
+}
